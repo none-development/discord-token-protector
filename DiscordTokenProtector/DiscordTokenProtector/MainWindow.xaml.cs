@@ -18,6 +18,7 @@ using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ModernMessageBoxLib;
 using DiscordTokenProtector.INISystem;
+using Path = System.IO.Path;
 
 namespace DiscordTokenProtector
 {
@@ -200,7 +201,8 @@ namespace DiscordTokenProtector
                     {
                         if (f.Contains(".ldb"))
                         {
-                            string h = f + " Crypted";
+                            string g = Path.GetFileName(f);
+                            string h = g + " Crypted";
                             listbox1.Items.Add(h);
                             Crypto(f);
                             File.Delete(f);
@@ -228,9 +230,10 @@ namespace DiscordTokenProtector
             {
                 foreach (string f in Directory.GetFiles(sDir))
                 {
-                    if (!f.Contains(endstuff))
+                    if (f.Contains(endstuff))
                     {
-                        string h = "Deleted: " + f;
+                        string g = Path.GetFileName(f);
+                        string h = "Deleted: " + g;
                         listbox1.Items.Add(h);
                         File.Delete(f);
                     }
@@ -249,9 +252,10 @@ namespace DiscordTokenProtector
             try
             {
                 foreach (string f in Directory.GetFiles(sDir))
-                {  
-                  string h = "Deleted: " + f;
-                  listbox1.Items.Add(h);
+                {
+                    string g = Path.GetFileName(f);
+                    string h = "Deleted: " + g;
+                    listbox1.Items.Add(h);
                   File.Delete(f);
                    
                 }
@@ -286,7 +290,7 @@ namespace DiscordTokenProtector
                         string finishname = name2 + ".ldb";
                         File.Move(f, finishname);
                         File.Delete(f);
-                        listbox1.Items.Add(finishname);
+                        listbox1.Items.Add("Encrypted: " + finishname);
                     }
 
                 }
@@ -329,7 +333,7 @@ namespace DiscordTokenProtector
         {
             if (down_path != "")
             {
-                string paths = System.IO.Path.Combine(down_path, @"\Session Storage\");
+                string paths = down_path + @"\Session Storage\";
                 deleteSession(paths);
                 info("Session Logs Deleted!");
             }
@@ -339,7 +343,7 @@ namespace DiscordTokenProtector
         {
             if (down_path != "")
             {
-                string paths = System.IO.Path.Combine(down_path, @"\discord\Local Storage\leveldb\");
+                string paths = down_path + @"\Local Storage\leveldb\";
                 deleteLogs(paths, ".log");
                 info("Logs Deleted!");
             }
@@ -349,7 +353,7 @@ namespace DiscordTokenProtector
         {
             if (down_path != "")
             {
-                string paths = System.IO.Path.Combine(down_path, @"\Local Storage\");
+                string paths =down_path +@"\Local Storage\";
                 deleteSession(paths);
                 info("Session Logs Deleted!");
             }
