@@ -2,7 +2,7 @@
 
 <h2 align="center">Downloads</h2>
 
-Latest Version: [GitHub](https://github.com/Azusa-chxn/discord-token-protector/tags)
+Latest Version: [Download](https://github.com/Azusa-chxn/discord-token-protector/tags)
 
 <h2 align="center">About DTP</h2>
 
